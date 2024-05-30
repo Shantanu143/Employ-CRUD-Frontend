@@ -93,7 +93,6 @@ const EditEmp: React.FC = () => {
           setMsg("Employee Edited successfully");
           navigate("/");
           console.log(response);
-          
         })
         .catch((error: unknown) => {
           console.log(error);
@@ -115,153 +114,141 @@ const EditEmp: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center py-10 bg-gray-100">
+    <div className="py-6 px-4 bg-gray-100">
       <form
-        className="w-full max-w-lg"
+        className="max-w-md mx-auto"
         onSubmit={handleSubmit}
         onReset={handleReset}
       >
-        <div className="flex flex-wrap -mx-3 mb-6">
-          {msg && (
-            <h1 className="text-center text-3xl my-5 text-green-500">{msg}</h1>
+        {msg && (
+          <h1 className="text-center text-2xl text-green-500 mb-4">{msg}</h1>
+        )}
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="firstName"
+          >
+            First Name
+          </label>
+          <input
+            className={`w-full bg-gray-200 text-gray-700 border ${
+              formErrors.firstName ? "border-red-500" : "border-gray-200"
+            } rounded py-2 px-3 focus:outline-none focus:bg-white`}
+            id="firstName"
+            type="text"
+            placeholder="Jane"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+          {formErrors.firstName && (
+            <p className="text-red-500 text-xs italic">
+              {formErrors.firstName}
+            </p>
           )}
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="firstName"
-            >
-              First Name
-            </label>
-            <input
-              className={`appearance-none block w-full bg-gray-200 text-gray-700 border ${
-                formErrors.firstName ? "border-red-500" : "border-gray-200"
-              } rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
-              id="firstName"
-              type="text"
-              placeholder="Jane"
-              value={formData.firstName}
-              onChange={handleChange}
-            />
-            {formErrors.firstName && (
-              <p className="text-red-500 text-xs italic">
-                {formErrors.firstName}
-              </p>
-            )}
-          </div>
-          <div className="w-full md:w-1/2 px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="lastName"
-            >
-              Last Name
-            </label>
-            <input
-              className={`appearance-none block w-full bg-gray-200 text-gray-700 border ${
-                formErrors.lastName ? "border-red-500" : "border-gray-200"
-              } rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white`}
-              id="lastName"
-              type="text"
-              placeholder="Doe"
-              value={formData.lastName}
-              onChange={handleChange}
-            />
-            {formErrors.lastName && (
-              <p className="text-red-500 text-xs italic">
-                {formErrors.lastName}
-              </p>
-            )}
-          </div>
         </div>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className={`appearance-none block w-full bg-gray-200 text-gray-700 border ${
-                formErrors.email ? "border-red-500" : "border-gray-200"
-              } rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white`}
-              id="email"
-              type="email"
-              placeholder="demo@gmail.com"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            {formErrors.email && (
-              <p className="text-red-500 text-xs italic">{formErrors.email}</p>
-            )}
-          </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="lastName"
+          >
+            Last Name
+          </label>
+          <input
+            className={`w-full bg-gray-200 text-gray-700 border ${
+              formErrors.lastName ? "border-red-500" : "border-gray-200"
+            } rounded py-2 px-3 focus:outline-none focus:bg-white`}
+            id="lastName"
+            type="text"
+            placeholder="Doe"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+          {formErrors.lastName && (
+            <p className="text-red-500 text-xs italic">{formErrors.lastName}</p>
+          )}
         </div>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="address"
-            >
-              Address
-            </label>
-            <input
-              className={`appearance-none block w-full bg-gray-200 text-gray-700 border ${
-                formErrors.address ? "border-red-500" : "border-gray-200"
-              } rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white`}
-              id="address"
-              type="text"
-              placeholder="Albuquerque"
-              value={formData.address}
-              onChange={handleChange}
-            />
-            {formErrors.address && (
-              <p className="text-red-500 text-xs italic">
-                {formErrors.address}
-              </p>
-            )}
-          </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="email"
+          >
+            Email
+          </label>
+          <input
+            className={`w-full bg-gray-200 text-gray-700 border ${
+              formErrors.email ? "border-red-500" : "border-gray-200"
+            } rounded py-2 px-3 focus:outline-none focus:bg-white`}
+            id="email"
+            type="email"
+            placeholder="demo@gmail.com"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {formErrors.email && (
+            <p className="text-red-500 text-xs italic">{formErrors.email}</p>
+          )}
         </div>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="salary"
-            >
-              Salary
-            </label>
-            <div className="relative">
-              <input
-                className={`block appearance-none w-full bg-gray-200 border ${
-                  formErrors.salary ? "border-red-500" : "border-gray-200"
-                } text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white`}
-                id="salary"
-                type="number"
-                placeholder="20000"
-                value={formData.salary ?? ""}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    salary: e.target.value ? parseFloat(e.target.value) : null,
-                  })
-                }
-              />
-            </div>
-            {formErrors.salary && (
-              <p className="text-red-500 text-xs italic">{formErrors.salary}</p>
-            )}
-          </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="address"
+          >
+            Address
+          </label>
+          <input
+            className={`w-full bg-gray-200 text-gray-700 border ${
+              formErrors.address ? "border-red-500" : "border-gray-200"
+            } rounded py-2 px-3 focus:outline-none focus:bg-white`}
+            id="address"
+            type="text"
+            placeholder="Albuquerque"
+            value={formData.address}
+            onChange={handleChange}
+          />
+          {formErrors.address && (
+            <p className="text-red-500 text-xs italic">{formErrors.address}</p>
+          )}
         </div>
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold mr-8 py-2 px-4 rounded"
-        >
-          Submit
-        </button>
-        <button
-          type="reset"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Reset
-        </button>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="salary"
+          >
+            Salary
+          </label>
+          <input
+            className={`w-full bg-gray-200 text-gray-700 border ${
+              formErrors.salary ? "border-red-500" : "border-gray-200"
+            } rounded py-2 px-3 focus:outline-none focus:bg-white`}
+            id="salary"
+            type="number"
+            placeholder="20000"
+            value={formData.salary ?? ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                salary: e.target.value ? parseFloat(e.target.value) : null,
+              })
+            }
+          />
+          {formErrors.salary && (
+            <p className="text-red-500 text-xs italic">{formErrors.salary}</p>
+          )}
+        </div>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold mr-4 py-2 px-4 rounded"
+          >
+            Submit
+          </button>
+          <button
+            type="reset"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Reset
+          </button>
+        </div>
       </form>
     </div>
   );
